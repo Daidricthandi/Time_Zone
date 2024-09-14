@@ -8,15 +8,30 @@
     <title>Time Zone</title>
 </head>
 <body>
+
+    <h1>Select a city</h1>
+    <br>
     <form>
      <label for="city"></label>
-     <select name="" id="countries">
+    <select id="citySelect" onchange="showCityTime()">
         <option value="">Select a city</option>
-        <option value="paris">Paris</option>
-        <option value="sydney">Sydney</option>
-        <option value="tokyo">Tokyo</option>
+        <option value="Europe/Paris">Paris</option>
+        <option value="Australia/Sydney">Sydney</option>
+        <option value="Asia/Tokyo">Tokyo</option>
      </select>
     </form>
-    
+ 
+    <script>
+        function showCityTime() {
+            var city = document.getElementById("citySelect").value;
+
+            if (city) {
+                var cityTime = moment.tz(city).format('dddd, MMMM D, YYYY hh:mm A');
+                alert("It is " + cityTime + " in " + city);
+            }
+        }
+    </script>
 </body>
+
+
 </html>
